@@ -1,15 +1,15 @@
 /* --- Premium Architectural Layout System --- */
 :root {
-    --line-color: #2A2623;      /* Crisp, architectural border wireframe line */
+    --line-color: #1F2421;      /* Deep Forest Obsidian for crisp architectural borders */
     
-    /* Elegant Tone Spectrum (Prevents flat white/boring look) */
-    --color-cream: #FAF8F5;     /* Clear Clean Linen (Used for Hero & Skills background) */
-    --color-beige: #F4EFE6;     /* True Warm Sand Beige (Used for About background) */
-    --color-oatmeal: #ECE6DA;   /* Rich Muted Oatmeal Gray-Beige (Used for Activities background) */
-    --color-outer: #DFD9CE;     /* Outer Frame Wrapper Margins background color */
+    /* Tone Spectrum */
+    --color-cream: #FDFBF7;     /* Soft Linen White (Hero & Skills) */
+    --color-beige: #EAECE6;     /* Light Eucalyptus Sage Tint (About) */
+    --color-oatmeal: #D8DDD2;   /* Premium Mossy Sage Gray (Activities) */
+    --color-outer: #CAD1C3;     /* Muted Olive-Sage Frame Background */
     
-    --text-main: #2A2623;       /* Deep Luxury Charcoal for high contrast text */
-    --text-sub: #6E665E;        /* Soft Mineral Taupe for utility labels */
+    --text-main: #1F2421;       /* Deep Slate Charcoal for perfect contrast */
+    --text-sub: #5E6661;        /* Muted Pine Taupe for sub-labels */
     
     --font-serif: 'Playfair Display', serif;
     --font-sans: 'Plus Jakarta Sans', sans-serif;

@@ -1,10 +1,15 @@
-/* --- Pinterest Beige Editorial Layout Styling --- */
+/* --- Premium Architectural Layout System --- */
 :root {
-    --bg-page: #EDE9E0;         /* Soft Luxury Oatmeal background tone */
-    --bg-box: #FAF8F5;          /* Creamy Off-White for interior card cells */
-    --text-main: #2A2623;       /* Deep Muted Charcoal (Elegant typography color) */
-    --text-sub: #6E665E;        /* Soft Mineral Taupe for descriptions */
-    --line-color: #2A2623;      /* Crisp, distinct box border outline line color */
+    --line-color: #2A2623;      /* Crisp, architectural border wireframe line */
+    
+    /* Elegant Tone Spectrum (Prevents flat white/boring look) */
+    --color-cream: #FAF8F5;     /* Clear Clean Linen (Used for Hero & Skills background) */
+    --color-beige: #F4EFE6;     /* True Warm Sand Beige (Used for About background) */
+    --color-oatmeal: #ECE6DA;   /* Rich Muted Oatmeal Gray-Beige (Used for Activities background) */
+    --color-outer: #DFD9CE;     /* Outer Frame Wrapper Margins background color */
+    
+    --text-main: #2A2623;       /* Deep Luxury Charcoal for high contrast text */
+    --text-sub: #6E665E;        /* Soft Mineral Taupe for utility labels */
     
     --font-serif: 'Playfair Display', serif;
     --font-sans: 'Plus Jakarta Sans', sans-serif;
@@ -22,27 +27,38 @@ html {
 
 body {
     font-family: var(--font-sans);
-    background-color: var(--bg-page);
+    background-color: var(--color-outer);
     color: var(--text-main);
-    padding: 25px; /* Creates elegant page margin outer frame look */
+    padding: 30px; /* Surrounds the whole layout with a premium editorial outer frame */
     -webkit-font-smoothing: antialiased;
 }
 
-/* Page Outer Wireframe Frame Wrapper */
+/* Outer Wireframe Box Frame Container */
 .page-wrapper {
     max-width: 1300px;
     margin: 0 auto;
-    border: 1px solid var(--line-color); /* The giant framing box */
-    background-color: var(--bg-page);
+    border: 1px solid var(--line-color);
+    box-shadow: 0 15px 50px rgba(42, 38, 35, 0.08);
 }
 
-/* --- Boxed Navigation --- */
+/* --- Section Zone Background Alternation Rules --- */
+.section-zone {
+    border-bottom: 1px solid var(--line-color);
+    transition: background-color 0.4s ease;
+}
+
+/* Assign unique tone shifts across your tabs */
+.tint-cream { background-color: var(--color-cream); }
+.tint-beige { background-color: var(--color-beige); }
+.tint-oatmeal { background-color: var(--color-oatmeal); }
+
+/* --- Navigation (Stuck to top) --- */
 .navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 25px 35px;
-    background-color: var(--bg-page);
+    padding: 25px 40px;
+    background-color: var(--color-cream);
     border-bottom: 1px solid var(--line-color);
     position: sticky;
     top: 0;
@@ -72,11 +88,11 @@ body {
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 1.5px;
-    transition: color 0.2s;
+    transition: opacity 0.2s;
 }
 
 .nav-links li a:hover {
-    color: var(--text-sub);
+    opacity: 0.6;
 }
 
 .hamburger {
@@ -92,11 +108,10 @@ body {
     background-color: var(--text-main);
 }
 
-/* --- Hero Layout Box --- */
+/* --- Home Tab Box --- */
 .hero-box {
-    padding: 80px 40px;
-    border-bottom: 1px solid var(--line-color);
-    background-color: var(--bg-sub);
+    padding: 100px 40px;
+    background-color: var(--color-cream);
 }
 
 .tagline {
@@ -110,7 +125,7 @@ body {
 
 .hero-box h1 {
     font-family: var(--font-serif);
-    font-size: 3.4rem;
+    font-size: 3.5rem;
     font-weight: 400;
     line-height: 1.25;
     max-width: 1000px;
@@ -133,7 +148,6 @@ body {
     font-family: var(--font-serif);
     font-size: 1.8rem;
     font-weight: 400;
-    margin-bottom: 4px;
 }
 
 .detail-block p {
@@ -149,16 +163,14 @@ body {
     letter-spacing: 1px;
     border-bottom: 1px solid var(--text-main);
     padding-bottom: 4px;
-    transition: all 0.3s;
+    transition: padding 0.3s;
 }
 
 .btn-arrow:hover {
-    color: var(--text-sub);
-    border-color: var(--text-sub);
-    padding-right: 6px;
+    padding-right: 8px;
 }
 
-/* --- Labels Shared Across Structural Boxes --- */
+/* --- Structural Interior Labels --- */
 .box-label {
     padding: 15px 40px;
     font-size: 0.75rem;
@@ -169,27 +181,19 @@ body {
     color: var(--text-sub);
 }
 
-/* --- About Box Layout --- */
-.about-box {
-    border-bottom: 1px solid var(--line-color);
-}
-
+/* --- About Tab Box --- */
 .about-content {
-    padding: 60px 40px;
-    max-width: 950px;
+    padding: 80px 40px;
+    max-width: 1000px;
 }
 
 .about-content p {
     font-family: var(--font-serif);
-    font-size: 1.65rem;
+    font-size: 1.7rem;
     line-height: 1.5;
 }
 
-/* --- Technical Skills Grid Boxes --- */
-.skills-box {
-    border-bottom: 1px solid var(--line-color);
-}
-
+/* --- Skills Tab Box Grid --- */
 .skills-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -197,9 +201,9 @@ body {
 
 .skill-cell {
     padding: 40px;
-    background-color: var(--bg-page);
     border-right: 1px solid var(--line-color);
     border-bottom: 1px solid var(--line-color);
+    background-color: transparent; /* inherits the custom section tint */
 }
 
 .skills-grid .skill-cell:last-child {
@@ -225,22 +229,18 @@ body {
     color: var(--text-sub);
 }
 
-/* --- Activities Box Grid --- */
-.activities-box {
-    border-bottom: 1px solid var(--line-color);
-}
-
+/* --- Activities Tab Box Grid --- */
 .activities-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
 }
 
 .activity-card {
-    padding: 40px;
+    padding: 45px 40px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    min-height: 320px;
+    min-height: 340px;
     border-right: 1px solid var(--line-color);
     border-bottom: 1px solid var(--line-color);
 }
@@ -249,13 +249,14 @@ body {
     border-right: none;
 }
 
+/* Inner popout background contrast for the active card */
 .active-card {
-    background-color: var(--bg-box);
+    background-color: var(--color-cream);
 }
 
 .pending-card {
     background-color: transparent;
-    opacity: 0.7;
+    opacity: 0.65;
 }
 
 .card-meta {
@@ -263,7 +264,6 @@ body {
     justify-content: space-between;
     font-size: 0.75rem;
     font-weight: 600;
-    letter-spacing: 1px;
     color: var(--text-sub);
 }
 
@@ -272,12 +272,7 @@ body {
     font-size: 0.7rem;
     border: 1px solid var(--line-color);
     padding: 2px 8px;
-    border-radius: 10px;
-}
-
-.status-indicator.muted {
-    border-color: #BDB6AE;
-    color: var(--text-sub);
+    border-radius: 12px;
 }
 
 .card-body h3 {
@@ -298,7 +293,6 @@ body {
 .card-action {
     font-size: 0.8rem;
     font-weight: 600;
-    letter-spacing: 0.5px;
     border-bottom: 1px solid var(--text-main);
     align-self: flex-start;
     padding-bottom: 2px;
@@ -310,13 +304,9 @@ body {
     font-style: italic;
 }
 
-/* --- Contact Split Layout Box --- */
-.contact-box {
-    border-bottom: 1px solid var(--line-color);
-}
-
+/* --- Contact Tab Box Split --- */
 .contact-split {
-    padding: 60px 40px;
+    padding: 80px 40px;
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 40px;
@@ -325,16 +315,14 @@ body {
 
 .contact-split h3 {
     font-family: var(--font-serif);
-    font-size: 1.5rem;
+    font-size: 1.6rem;
     font-weight: 400;
-    max-width: 450px;
     line-height: 1.4;
 }
 
 .contact-links {
     display: flex;
     gap: 30px;
-    justify-content: flex-start;
 }
 
 .link-item {
@@ -344,12 +332,7 @@ body {
     padding-bottom: 4px;
 }
 
-.link-item:hover {
-    color: var(--text-sub);
-    border-color: var(--text-sub);
-}
-
-/* --- Outlined Editorial Footer --- */
+/* --- Boxed Editorial Footer --- */
 .footer-box {
     display: flex;
     justify-content: space-between;
@@ -358,10 +341,10 @@ body {
     color: var(--text-sub);
     text-transform: uppercase;
     letter-spacing: 1px;
-    background-color: var(--bg-page);
+    background-color: var(--color-cream); /* grounds the base of the page layout wrapper */
 }
 
-/* --- Responsive Layout Rules --- */
+/* --- Responsive Rules --- */
 @media (max-width: 900px) {
     body { padding: 10px; }
     .hero-box h1 { font-size: 2.3rem; }
@@ -381,7 +364,7 @@ body {
         top: 71px;
         left: -101%;
         flex-direction: column;
-        background-color: var(--bg-page);
+        background-color: var(--color-cream);
         width: 102%;
         text-align: center;
         padding: 30px 0;

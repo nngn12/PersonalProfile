@@ -155,12 +155,12 @@
             display: none;
             text-align: center;
             padding: 20px 0;
-            animation: fadeIn 0.5s ease forward;
+            animation: fadeIn 0.5s ease forwards;
         }
 
         .success-icon {
             font-size: 4rem;
-            color: #243b53;
+            color: #102a43;
             margin-bottom: 20px;
         }
 
@@ -185,7 +185,7 @@
                 <p>Skip the email app. Fill out the secure form below and your message will be routed directly to my inbox.</p>
             </div>
             
-            <!-- Remember to replace YOUR_FORMSPREE_LINK_HERE with your actual Formspree endpoint URL -->
+            <!-- Change ONLY the 'YOUR_FORM_ID' text inside the action link below -->
             <form id="email-form" action="https://formspree.io/f/mqevkkbe" method="POST" class="email-form">
                 
                 <div class="input-group">
@@ -218,7 +218,7 @@
 
     </div>
 
-    <!-- Magical Script that handles form submission seamlessly -->
+    <!-- Script that handles form submission smoothly without page reloads -->
     <script>
         const form = document.getElementById("email-form");
         const formContainer = document.getElementById("form-container");
@@ -226,7 +226,7 @@
         const submitBtn = document.getElementById("submit-btn");
 
         form.addEventListener("submit", async function(event) {
-            event.preventDefault(); // Stops the page from redirecting to a 404!
+            event.preventDefault(); // Completely blocks the browser from changing pages/redirecting
             
             submitBtn.innerHTML = 'Sending... <i class="fa-solid fa-spinner fa-spin"></i>';
             submitBtn.style.opacity = '0.7';
@@ -244,15 +244,15 @@
                 });
                 
                 if (response.ok) {
-                    // Smooth transition to Success Card
+                    // Instantly hide the form inputs and show the elegant Success Card
                     formContainer.style.display = "none";
                     successContainer.style.display = "block";
                 } else {
-                    alert("Oops! There was a problem sending your message. Please try again.");
+                    alert("Formspree Error: Please check that your Form ID is typed correctly inside the code.");
                     resetButton();
                 }
             } catch (error) {
-                alert("Network error. Please check your connection and try again.");
+                alert("Network error. Please check your internet connection and try again.");
                 resetButton();
             }
         });

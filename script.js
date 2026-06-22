@@ -11,7 +11,6 @@ document.addEventListener("DOMContentLoaded", () => {
         navLinks.classList.toggle("active");
     });
 
-    // Automatically collapse mobile tray on link interaction
     document.querySelectorAll(".nav-links li a").forEach(link => {
         link.addEventListener("click", () => {
             hamburger.classList.remove("active");
@@ -25,8 +24,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const revealElements = document.querySelectorAll('.reveal-up, .reveal-fade, .reveal-scale');
 
     const revealOptions = {
-        threshold: 0.12, 
-        rootMargin: "0px 0px -40px 0px" 
+        threshold: 0.10, // Activates earlier for long structural panels
+        rootMargin: "0px 0px -20px 0px"
     };
 
     const revealOnScroll = new IntersectionObserver(function(entries, observer) {

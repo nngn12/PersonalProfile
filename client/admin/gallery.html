@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery Workspace</title>
+    <link rel="stylesheet" href="/admin/admin.css">
+</head>
+
+<body>
+
+    <div class="sidebar">
+        <div>
+            <div class="sidebar-brand">
+                <span>TheFolio Workspace</span>
+                <span class="toggle-btn">&lt;</span>
+            </div>
+
+            <div class="sidebar-profile">
+                <div class="profile-avatar">AB</div>
+                <span class="profile-name">Ana Leah Basco</span>
+            </div>
+
+            <ul class="sidebar-menu">
+                <li><a href="/admin/dashboard" class="sidebar-link">📊 Dashboard</a></li>
+                <li><a href="/admin/gallery" class="sidebar-link active">🖼️ Gallery</a></li>
+                <li><a href="/admin/certificates" class="sidebar-link">🏅 Certificates</a></li>
+                <li><a href="/admin/messages" class="sidebar-link">✉️ Messages</a></li>
+            </ul>
+        </div>
+
+        <ul class="sidebar-menu-bottom">
+            <li><a href="/admin/logout" class="sidebar-link">🚪 Logout</a></li>
+        </ul>
+    </div>
+
+    <div class="container">
+        <div class="header">
+            <div>
+                <h1>Gallery</h1>
+                <p>Manage your portfolio projects and gallery images</p>
+            </div>
+            <button id="addGalleryBtn">
+                <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"></path>
+                </svg>
+                Add Item
+            </button>
+        </div>
+
+        <div class="list-wrapper">
+            <div class="list-header">
+                <h2>All Gallery Items</h2>
+                <p id="totalCount">Total: 0 items</p>
+            </div>
+            <div class="gallery-grid" id="galleryContainer"></div>
+        </div>
+    </div>
+
+    <div id="galleryModal" class="modal">
+        <div class="modal-content">
+            <span id="closeModal">&times;</span>
+            <h2>Add Gallery Item</h2>
+
+            <form id="galleryForm" enctype="multipart/form-data">
+                <label for="title">Project Title</label>
+                <input type="text" id="title" required placeholder="e.g., E-Commerce Redesign">
+
+                <label for="category">Category / Tag</label>
+                <input type="text" id="category" required placeholder="e.g., UI/UX Design">
+
+                <label for="date">Date Completed</label>
+                <input type="date" id="date" required>
+
+                <label for="description">Description</label>
+                <textarea id="description" required placeholder="Describe the project specifics..."></textarea>
+
+                <label for="image">Gallery Image</label>
+                <input type="file" id="image" accept="image/*">
+
+                <button type="submit">Save Gallery Item</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="/admin/gallery.js"></script>
+</body>
+
+</html>

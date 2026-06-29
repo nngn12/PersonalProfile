@@ -6,11 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Send Email | Ana Leah Basco</title>
 
-    <!-- Premium Google Fonts -->
     <link
         href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap"
         rel="stylesheet">
-    <!-- Font Awesome Kit -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
@@ -189,7 +187,6 @@
             <i class="fa-solid fa-arrow-left"></i> Return to Portfolio
         </a>
 
-        <!-- Main Content (Form View) -->
         <div id="form-container">
             <div class="header-section">
                 <h1>Direct Message</h1>
@@ -197,8 +194,7 @@
                     inbox.</p>
             </div>
 
-            <!-- Change ONLY the 'YOUR_FORM_ID' text inside the action link below -->
-            <form id="email-form" action="https://formspree.io/f/mqevkkbe" method="POST" class="email-form">
+            <form id="email-form" class="email-form">
 
                 <div class="input-group">
                     <input type="text" name="name" placeholder="Full Name" required class="custom-input">
@@ -206,6 +202,10 @@
 
                 <div class="input-group">
                     <input type="email" name="_replyto" placeholder="Email Address" required class="custom-input">
+                </div>
+
+                <div class="input-group">
+                    <input type="text" name="subject" placeholder="Subject" class="custom-input">
                 </div>
 
                 <div class="input-group">
@@ -219,7 +219,6 @@
             </form>
         </div>
 
-        <!-- Hidden Success State View -->
         <div id="success-container" class="success-state">
             <div class="success-icon">
                 <i class="fa-solid fa-circle-check"></i>
@@ -228,54 +227,77 @@
             </h1>
             <p style="color: #627d98; line-height: 1.6; margin-bottom: 30px;">Thank you for reaching out. Your email was
                 successfully transmitted directly to my inbox, and I will get back to you shortly.</p>
-            <a href="index.html" class="submit-btn" style="text-decoration: none;">Back to Workspace</a>
+            <a href="index.html" class="submit-btn" style="text-decoration: none;">Return</a>
         </div>
 
     </div>
 
-    <!-- Script that handles form submission smoothly without page reloads -->
     <script>
         const form = document.getElementById("email-form");
         const formContainer = document.getElementById("form-container");
         const successContainer = document.getElementById("success-container");
         const submitBtn = document.getElementById("submit-btn");
 
-        form.addEventListener("submit", async function (event) {
-            event.preventDefault(); // Completely blocks the browser from changing pages/redirecting
+        form.addEventListener("submit", async (event) => {
+
+            event.preventDefault();
 
             submitBtn.innerHTML = 'Sending... <i class="fa-solid fa-spinner fa-spin"></i>';
-            submitBtn.style.opacity = '0.7';
-            submitBtn.style.pointerEvents = 'none';
+            submitBtn.disabled = true;
 
-            const data = new FormData(event.target);
+            const formData = {
+                name: form.name.value,
+                email: form._replyto.value,
+                subject: form.subject.value,
+                message: form.message.value
+            };
 
             try {
-                const response = await fetch(event.target.action, {
-                    method: form.method,
-                    body: data,
+
+                const response = await fetch("http://localhost:3000/contact", {
+
+                    method: "POST",
+
                     headers: {
-                        'Accept': 'application/json'
-                    }
+                        "Content-Type": "application/json"
+                    },
+
+                    body: JSON.stringify(formData)
+
                 });
 
-                if (response.ok) {
-                    // Instantly hide the form inputs and show the elegant Success Card
+                const result = await response.json();
+
+                if (result.success) {
+
                     formContainer.style.display = "none";
                     successContainer.style.display = "block";
+
                 } else {
-                    alert("Formspree Error: Please check that your Form ID is typed correctly inside the code.");
+
+                    alert("Failed to send message.");
+
                     resetButton();
+
                 }
+
             } catch (error) {
-                alert("Network error. Please check your internet connection and try again.");
+
+                console.error(error);
+
+                alert("Server connection failed.");
+
                 resetButton();
+
             }
+
         });
 
         function resetButton() {
+
             submitBtn.innerHTML = 'Send Message <i class="fa-solid fa-paper-plane"></i>';
-            submitBtn.style.opacity = '1';
-            submitBtn.style.pointerEvents = 'auto';
+            submitBtn.disabled = false;
+
         }
     </script>
 

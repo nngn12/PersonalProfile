@@ -96,6 +96,9 @@ async function loadCertificates() {
             const readableDate = item.date_earned ? new Date(item.date_earned).toLocaleDateString(undefined, { year: 'numeric', month: 'long' }) : '';
             return `
                 <div class="certificate-row reveal-up">
+                  <div class="image-frame">
+                    <img src="${item.image_url}" alt="${escapeHtml(item.title)}" loading="lazy">
+                </div>
                     <div class="cert-header">
                         <span class="cert-tag">${escapeHtml(item.issuer || '')}</span>
                         <h4>${escapeHtml(item.title)}</h4>

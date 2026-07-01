@@ -100,13 +100,13 @@ body {
 
 .sidebar-link:hover {
     color: white;
-    background-color: #4cbd8e;
+    background-color: #3d6d59;
 }
 
 .sidebar-link.active {
     color: #ffffff;
-    background-color: #03412b;
-    border-left: 4px solid #105733;
+    background-color: #2d3b36;
+    border-left: 4px solid #a0ceb7;
     font-weight: 600;
 }
 
@@ -454,7 +454,7 @@ body {
 }
 
 .login-card {
-    background: rgb(213, 238, 234);
+    background: rgb(255, 255, 255);
     width: 380px;
     max-width: 90%;
     padding: 40px 32px;
@@ -464,18 +464,18 @@ body {
 
 .login-card h1 {
     font-size: 20px;
-    color: #112720;
+    color: #A9CEBB;
     margin-bottom: 6px;
 }
 
 .login-card > p {
     font-size: 14px;
-    color: #6b8077;
+    color: #6f9b88;
     margin-bottom: 24px;
 }
 
 .login-card form {
-    text-align: center;
+    text-align: left;
 }
 
 .login-card label {
@@ -490,7 +490,7 @@ body {
 .login-card input {
     width: 100%;
     padding: 11px 14px;
-    background-color: #f3f4f6;
+    background-color: #f7f7f7;
     border: 1px solid transparent;
     font-size: 14px;
     color: #112724;
@@ -510,7 +510,7 @@ body {
     background: #023b1f;
     color: white;
     border: none;
-    border-radius: 8px;
+    text-align: center;
     font-size: 14px;
     font-weight: 600;
     cursor: pointer;
@@ -536,7 +536,7 @@ body {
 }
 
 .back-link:hover {
-    color: #111827;
+    color: #11271d;
 }
 
 /* ===================================================
